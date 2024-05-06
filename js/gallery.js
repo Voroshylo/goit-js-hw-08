@@ -76,3 +76,17 @@ function createGallery(items) {
   gallery.innerHTML = markup;
 }
 createGallery(images);
+
+gallery.addEventListener('click', (event) => {
+  event.preventDefault();
+  const isGalleryImage = event.target.classList.contains('gallery-image');
+  if (!isGalleryImage) {
+    return;
+  }
+  const originalImage = event.target.dataset.source;
+  console.log(`${originalImage}`)
+
+  const instance = basicLightbox.create(`<img src="${originalImage}" width="1112" height="600">`)
+  instance.show();
+});
+
